@@ -170,7 +170,7 @@ class SnakeGame:
 
         #  if the collision occurs, game must be over 
         # results must be displayed
-        if self._is_collision(self):
+        if self._is_collision():
             game_over = True
             return game_over, self.score
 
