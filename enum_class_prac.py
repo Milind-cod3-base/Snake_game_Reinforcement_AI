@@ -8,3 +8,8 @@ class Days(Enum):
     Sun =1
     Mon = 2
     Tue =3 
+
+
+# print the enum member as a string
+print("The enum memeber as a string is: ", end="")
+print(Days.Mon)
