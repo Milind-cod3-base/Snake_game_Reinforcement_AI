@@ -10,9 +10,5 @@ class Days(Enum):
     Tue =3 
 
 
-# hashing the enum members (giving keys)
-# setting them into a dictionary
-Daytype = {} # empty dicitonary created
-
-Daytype[Days.Sun] = 'Sun God'    #key-value pair generated
-Daytype[Days.Mon] = "Moon God"
+print('enum memeber accessed by name: ')
+print(Days['Mon'])
