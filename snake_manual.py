@@ -160,7 +160,6 @@ class SnakeGame:
         # WHY? snake length will increase? lets see
 
         # step3: check if game over
-        
         # setting game_over variable as False
         game_over = False
 
@@ -170,11 +169,21 @@ class SnakeGame:
             game_over = True
             return game_over, self.score
 
-    
 
+
+        # step4: place new food if snakes eat or just move
+        if self.head == self.food:
+            # increase score by one
+            self.score +=1
+            # after eating place the food again
+            self._place_food()
+
+    
+    # method for if collision happens -> returns boolean value
     def _is_collision():
         pass
-
+    
+    # method to move the snake further
     def _move():
         pass
 
