@@ -40,3 +40,48 @@ BLOCK_SIZE = 20
 SPEED = 20
 
 
+# creating a class for the game
+class SnakeGame:
+    
+    # a constructor with pre-defined window size of the game
+    def __init__(self, w=640, h=480):
+        self.w = w
+        self.h = h 
+        
+        # init display
+        
+        # set the window size
+        self.display = pygame.display.set_mode((self.w, self.h))
+
+        # set the caption
+        pygame.display.set_caption('slave_snake')
+
+        # setting the clock with clock class
+        # this keeps track of the time
+        self.clock = pygame.time.Clock()
+
+        # init a game state
+        # using RIGHT from the enum inherited class Direction
+        self.direction = Direction.RIGHT
+
+        # putting the head of the snake while init
+        # in the middle of the screen
+        self.head = Point(self.w/2, self.h/2)
+
+        # creating a list which contains the attributes of 
+        # the snake
+        self.snake = [self.head, 
+                      Point(self.head.x-BLOCK_SIZE, self.head.y),
+                      Point(self.head.x-BLOCK_SIZE, self.head.y)]
+
+        # setting initial score to zero
+        self.score = 0
+        # food as none in init
+        self.food = None 
+
+        # placing the food in the game screen using method
+        # using a leading underscore for making it for internal use
+        # only
+        self._place_food()
+
+        
