@@ -2,6 +2,7 @@
 but this is controlled manually """
 
 # importing important libraries
+from numpy import block
 import pygame
 import random
 
@@ -154,8 +155,13 @@ class SnakeGame:
         # step2: moving action
         
         # this updates the head of the snake
+        # also resets the value of self.head attribute
         self._move(self.direction) 
+
+
         # inserts self.head before the index 0 in the snake list
+        # takes the new self.head value and puts it inside the snake
+        # and makes its new head
         self.snake.insert(0, self.head) 
 
         # step3: check if game over
@@ -238,7 +244,31 @@ class SnakeGame:
 
         
     # method to move the snake further
-    def _move():
-        pass
+    def _move(self, direction):
+        x = self.head.x # calling attribute head of snake's x cordinate
+        y = self.head.y
+
+        if direction == Direction.RIGHT:
+            # updating x
+            x += BLOCK_SIZE
+        
+        elif direction == Direction.LEFT:
+            # updating x
+            x -= BLOCK_SIZE
+
+        elif direction == Direction.DOWN:
+            # y updating
+            y += BLOCK_SIZE
+
+        elif direction == Direction.UP:
+            # y updating
+            y -= BLOCK_SIZE
+
+        # reseting self.head values to the new cordinates
+        self.head = Point(x,y)
+        
+
+
+        
 
             
