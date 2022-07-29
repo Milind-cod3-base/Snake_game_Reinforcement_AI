@@ -10,24 +10,9 @@ class Days(Enum):
     Tue =3 
 
 
-# print the enum member as a string
-print("The enum memeber as a string is: ", end="")
-print(Days.Mon)
+# hashing the enum members (giving keys)
+# setting them into a dictionary
+Daytype = {} # empty dicitonary created
 
-# print the enum member as a repr
-print("The enum member as a repr is:", end = "")
-print(repr(Days.Sun)) # This gives the entire detail about the member
-
-# print the name of the enum member
-print(Days.Tue.name)
-
-# Check the type of the enum member
-print(type(Days.Mon))  # gets the name of the class
-
-
-# Printing the enum as iterable
-for weekday in Days:
-    print(weekday)   
-
-    # gives out all the info about the enum members
-    #print(repr(weekday))
+Daytype[Days.Sun] = 'Sun God'    #key-value pair generated
+Daytype[Days.Mon] = "Moon God"
