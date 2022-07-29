@@ -192,7 +192,15 @@ class SnakeGame:
     
     # method for if collision happens -> returns boolean value
     def _is_collision():
-        pass
+        # hits boundary
+        if self.head.x > self.w - BLOCK_SIZE or self.head.x < 0 or self.head.y > self.h - BLOCK_SIZE or self.head.y < 0:
+            return True
+        
+        # hits itself
+        if self.head in self.snake[1:]:  # after first and second element
+            return True
+
+        return False
     
     # update the UI
     def _update_ui(self):
