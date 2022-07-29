@@ -72,7 +72,7 @@ class SnakeGame:
         self.head = Point(self.w/2, self.h/2)
 
         # creating a list which contains the attributes of 
-        # the snake
+        # the snake. Starting with length of 3 blocks.
         self.snake = [self.head, 
                       Point(self.head.x-BLOCK_SIZE, self.head.y),
                       Point(self.head.x-(2*BLOCK_SIZE), self.head.y)]
@@ -171,12 +171,18 @@ class SnakeGame:
 
 
 
-        # step4: place new food if snakes eat or just move
+        # step4: place new food if snake eats or just move
         if self.head == self.food:
             # increase score by one
             self.score +=1
             # after eating place the food again
             self._place_food()
+        
+        # if snake doesnt eat anything, pop the last part of the snake
+        # this will keep the length of the snake same
+        else:
+            self.snake.pop()
+        
 
     
     # method for if collision happens -> returns boolean value
