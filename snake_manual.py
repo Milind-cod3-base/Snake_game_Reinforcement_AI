@@ -149,7 +149,14 @@ class SnakeGame:
                 elif event.key == pygame.K_DOWN:
                     # setting direction attribute sets to directon downwards
                     self.direction = Direction.DOWN
+        
+        # moving action
+        
+        # this updates the head of the snake
+        self._move(self.direction) 
+        # inserts self.head before the index 0 in the snake list
+        self.snake.insert(0, self.head) 
 
-
+        # WHY? snake length will increase? lets see
 
             
