@@ -12,3 +12,6 @@ class Days(Enum):
 
 print('enum memeber accessed by name: ')
 print(Days['Mon'])
+
+print('enum member accessed by Value: ')
+print(Days(1))
