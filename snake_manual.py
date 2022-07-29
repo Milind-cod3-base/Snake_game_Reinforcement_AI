@@ -266,8 +266,28 @@ class SnakeGame:
 
         # reseting self.head values to the new cordinates
         self.head = Point(x,y)
-        
 
+
+# making the below functions run if this is chosen as main module
+if __name__ == "__main__":
+    
+    # making instance of the class
+    game = SnakeGame()
+
+    # game loop: it will continue until game_over turns false
+    while True:
+        # storing returned values
+        game_over, score = game.play_step()
+
+        if game_over == True:
+            # if game is over, break the loop
+            break
+    
+    # prints the score in the panel
+    print('Final Score', score)
+
+    # quit the pygame window
+    pygame.quit()
 
         
 
