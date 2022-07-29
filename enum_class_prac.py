@@ -23,3 +23,11 @@ print(Days.Tue.name)
 
 # Check the type of the enum member
 print(type(Days.Mon))  # gets the name of the class
+
+
+# Printing the enum as iterable
+for weekday in Days:
+    print(weekday)   
+
+    # gives out all the info about the enum members
+    #print(repr(weekday))
