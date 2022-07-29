@@ -39,7 +39,7 @@ BLACK = (0,0,0)
 # variable: size of food block
 BLOCK_SIZE = 20
 
-# variable: speed of the snake
+# variable: speed of the clock
 SPEED = 20
 
 
@@ -183,12 +183,21 @@ class SnakeGame:
         else:
             self.snake.pop()
         
+        # step5:  update ui and clock
+        self._update_ui()
+        self.clock.tick(SPEED)
 
+        # step6: return game over and score
+        return game_over, self.score
     
     # method for if collision happens -> returns boolean value
     def _is_collision():
         pass
     
+    # update the UI
+    def _update_ui(self):
+        pass
+
     # method to move the snake further
     def _move():
         pass
