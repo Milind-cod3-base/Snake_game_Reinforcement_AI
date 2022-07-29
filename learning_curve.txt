@@ -9,3 +9,6 @@ Things learnt during this project:
     with an underscore.
 
 5. why in step 2 of play_step method? there is addition on snake's head?
+Ans: the move method which is called above us resets the snake's head coordinates. 
+Hence these new coordinates of head must be put inside the snakes body.
+Hence, we insert the new head into the snake's head.
