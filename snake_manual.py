@@ -72,7 +72,7 @@ class SnakeGame:
         # the snake
         self.snake = [self.head, 
                       Point(self.head.x-BLOCK_SIZE, self.head.y),
-                      Point(self.head.x-BLOCK_SIZE, self.head.y)]
+                      Point(self.head.x-(2*BLOCK_SIZE), self.head.y)]
 
         # setting initial score to zero
         self.score = 0
@@ -84,4 +84,21 @@ class SnakeGame:
         # only
         self._place_food()
 
+    
+    # creating a method for placing the food randomly in game display
+    # this method is for internal use only
+    def _place_food(self):
         
+        # setting cordinates which must inside the boundary of display
+        x = random.randint(0, (self.w-BLOCK_SIZE)//BLOCK_SIZE)*BLOCK_SIZE
+        y = random.randint(0, (self.w-BLOCK_SIZE)//BLOCK_SIZE)*BLOCK_SIZE
+
+        # assigning attribute for food position
+        self.food = Point(x,y)
+        
+        # if cordinates of food and cordinates of snakes coincides
+        # and it means the snake has eaten the food, new food has to
+        # be placed again. 
+        # Using recursive style on this method to replace the food
+        if self.food in self.snake:
+            self._place_food()  
