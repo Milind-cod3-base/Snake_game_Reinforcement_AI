@@ -42,7 +42,7 @@ BLOCK_SIZE = 20
 
 # variable: speed of the clock which refreshes the screen
 # indirectly speed of the snake
-SPEED = 20
+SPEED = 10
 
 
 # creating a class for the game
