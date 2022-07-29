@@ -1,0 +1,6 @@
+Things learnt during this project:
+
+1. About Enum class and its importance
+2. Pygame classes and methods
+3. namedtuple: This creates touples which aleady have names, like
+        coordinates (x,y) in the project
