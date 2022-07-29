@@ -36,7 +36,10 @@ BLUE1 = (0,0,255)
 BLUE2 = (0,100,255)
 BLACK = (0,0,0)
 
+# variable: size of food block
 BLOCK_SIZE = 20
+
+# variable: speed of the snake
 SPEED = 20
 
 
@@ -102,3 +105,51 @@ class SnakeGame:
         # Using recursive style on this method to replace the food
         if self.food in self.snake:
             self._place_food()  
+
+   
+    # creating a method for the snake to take steps
+    def play_step(self):
+
+        # step1: collecting user input
+
+        # creating a for loop using pygame.event.get()
+        # it registers all events from the user into an event queue
+        # pygame has some predefined events in them, eg. QUIT, KEYDOWN
+        for event in pygame.event.get():
+
+            # checking if user wishes to quit
+            # standard code for pygame
+            if event.type == pygame.QUIT:
+                # quits the pygame
+                pygame.quit()
+                #quits the code
+                quit()  
+            
+
+            # check if the user wish to continue
+            # pygame.KEYDOWN checks if any key is pressed or not
+            if event.type == pygame.KEYDOWN:
+
+                # if key pressed is left 
+                if event.key == pygame.K_LEFT:
+                    # setting direction attribute sets to directon left
+                    self.direction = Direction.LEFT
+
+                # if key pressed is right 
+                elif event.key == pygame.K_RIGHT:
+                    # setting direction attribute sets to directon right
+                    self.direction = Direction.RIGHT
+
+                # if key pressed is up 
+                elif event.key == pygame.K_UP:
+                    # setting direction attribute sets to directon upwards
+                    self.direction = Direction.UP
+
+                # if key pressed is down
+                elif event.key == pygame.K_DOWN:
+                    # setting direction attribute sets to directon downwards
+                    self.direction = Direction.DOWN
+
+
+
+            
