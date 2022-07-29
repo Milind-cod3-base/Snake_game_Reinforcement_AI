@@ -39,7 +39,8 @@ BLACK = (0,0,0)
 # variable: size of food block
 BLOCK_SIZE = 20
 
-# variable: speed of the clock
+# variable: speed of the clock which refreshes the screen
+# indirectly speed of the snake
 SPEED = 20
 
 
@@ -157,8 +158,6 @@ class SnakeGame:
         # inserts self.head before the index 0 in the snake list
         self.snake.insert(0, self.head) 
 
-        # WHY? snake length will increase? lets see
-
         # step3: check if game over
         # setting game_over variable as False
         game_over = False
@@ -191,21 +190,53 @@ class SnakeGame:
         return game_over, self.score
     
     # method for if collision happens -> returns boolean value
-    def _is_collision():
+    def _is_collision(self):
         # hits boundary
         if self.head.x > self.w - BLOCK_SIZE or self.head.x < 0 or self.head.y > self.h - BLOCK_SIZE or self.head.y < 0:
             return True
         
         # hits itself
-        if self.head in self.snake[1:]:  # after first and second element
+        if self.head in self.snake[1:]:  
+            # if the head is in the snake and its 3rd or later element
+            # then it has hit itself
+
             return True
 
         return False
     
     # update the UI
     def _update_ui(self):
-        pass
+        
+        # creating the background black
+        self.display.fill(BLACK)
 
+        # looping through the list of snake's length
+        # and colouring the whole snake blue
+        # using two colours and overlapping them
+        # to give an illusion of amazing design
+        for pt in self.snake:  # iterating using pt below
+
+            # laying base color for foundation
+            pygame.draw.rect(self.display, BLUE1, pygame.Rect(pt.x, pt.y, BLOCK_SIZE, BLOCK_SIZE ))
+            # laying another layer of color on top of base color
+            pygame.draw.rect(self.display, BLUE2, pygame.Rect(pt.x+4, pt.y+4, 12, 12 ))
+
+        # this is to refresh the food block    
+        pygame.draw.rect(self.display, RED, pygame.Rect(self.food.x, self.food.y, BLOCK_SIZE, BLOCK_SIZE))
+
+        # refreshing the UI
+
+        # set the text with font
+        text = font.render("Score: " + str(self.score), True, WHITE)
+
+        # set the position for HUD
+        self.display.blit(text, [0,0])
+
+        # updating the entire screen by using flip
+        # NOTE: if only portion of screen has to be updated, use update method instead of flip
+        pygame.display.flip()
+
+        
     # method to move the snake further
     def _move():
         pass
