@@ -7,3 +7,5 @@ Things learnt during this project:
 4. _single_leading_underscore: weak "internal use" indicator.
     E.g. from M import * does not import objects whose name starts 
     with an underscore.
+
+5. why in step 2 of play_step method? there is addition on snake's head?
