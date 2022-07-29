@@ -150,7 +150,7 @@ class SnakeGame:
                     # setting direction attribute sets to directon downwards
                     self.direction = Direction.DOWN
         
-        # moving action
+        # step2: moving action
         
         # this updates the head of the snake
         self._move(self.direction) 
@@ -158,5 +158,24 @@ class SnakeGame:
         self.snake.insert(0, self.head) 
 
         # WHY? snake length will increase? lets see
+
+        # step3: check if game over
+        
+        # setting game_over variable as False
+        game_over = False
+
+        #  if the collision occurs, game must be over 
+        # results must be displayed
+        if self._is_collision(self):
+            game_over = True
+            return game_over, self.score
+
+    
+
+    def _is_collision():
+        pass
+
+    def _move():
+        pass
 
             
