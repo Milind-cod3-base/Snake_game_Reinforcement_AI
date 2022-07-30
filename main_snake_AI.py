@@ -10,3 +10,9 @@ pygame.init()
 
 # setting up the font
 font = pygame.font.Font('arial.ttf', 25)
+
+# functions needed are as follows:
+# reset
+# reward
+# play(action) -> direction
+# is_collision
