@@ -65,6 +65,15 @@ class SnakeGame:
         # this keeps track of the time
         self.clock = pygame.time.Clock()
 
+        # calling the reset method here in the constructor
+        self.reset()
+
+        
+
+    # setting up a reset method for the ai
+    # copied code from init constructor
+    # which init the game state and pasted
+    def reset(self):
         # init a game state
         # using RIGHT from the enum inherited class Direction
         self.direction = Direction.RIGHT
@@ -88,6 +97,9 @@ class SnakeGame:
         # using a leading underscore for making it for internal use
         # only
         self._place_food()
+        
+        # setting the frame iteration counter to 0 
+        self.frame_iteration = 0
 
     
     # creating a method for placing the food randomly in game display
