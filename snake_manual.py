@@ -2,7 +2,6 @@
 but this is controlled manually """
 
 # importing important libraries
-from numpy import block
 import pygame
 import random
 
@@ -28,7 +27,7 @@ class Direction(Enum):
  
 #  creating a namedtuple for the x and y cordinates
 # basically it names the cordinates as x= and y= 
-Point = namedtuple('Point','x,y')
+Point = namedtuple('Point','x, y')
 
 # rgb colors
 WHITE = (255,255,255)
@@ -42,7 +41,7 @@ BLOCK_SIZE = 20
 
 # variable: speed of the clock which refreshes the screen
 # indirectly speed of the snake
-SPEED = 10
+SPEED = 2
 
 
 # creating a class for the game
@@ -96,7 +95,7 @@ class SnakeGame:
         
         # setting cordinates which must inside the boundary of display
         x = random.randint(0, (self.w-BLOCK_SIZE)//BLOCK_SIZE)*BLOCK_SIZE
-        y = random.randint(0, (self.w-BLOCK_SIZE)//BLOCK_SIZE)*BLOCK_SIZE
+        y = random.randint(0, (self.h-BLOCK_SIZE)//BLOCK_SIZE)*BLOCK_SIZE
 
         # assigning attribute for food position
         self.food = Point(x,y)
@@ -239,7 +238,7 @@ class SnakeGame:
         self.display.blit(text, [0,0])
 
         # updating the entire screen by using flip
-        # NOTE: if only portion of screen has to be updated, use update method instead of flip
+        #: if only portion of screen has to be updated, use update method instead of flip
         pygame.display.flip()
 
         
