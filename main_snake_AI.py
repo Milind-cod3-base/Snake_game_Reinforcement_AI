@@ -45,8 +45,8 @@ BLOCK_SIZE = 20
 # indirectly speed of the snake
 SPEED = 2
 
-# creating a class for the game
-class SnakeGame:
+# creating a class for the AI handled snake game 
+class SnakeGameAI:
     
     # a constructor with pre-defined window size of the game
     def __init__(self, w=640, h=480):
@@ -97,7 +97,7 @@ class SnakeGame:
         # using a leading underscore for making it for internal use
         # only
         self._place_food()
-        
+
         # setting the frame iteration counter to 0 
         self.frame_iteration = 0
 
@@ -138,37 +138,15 @@ class SnakeGame:
                 pygame.quit()
                 #quits the code
                 quit()  
-            
 
-            # check if the user wish to continue
-            # pygame.KEYDOWN checks if any key is pressed or not
-            if event.type == pygame.KEYDOWN:
-
-                # if key pressed is left 
-                if event.key == pygame.K_LEFT:
-                    # setting direction attribute sets to directon left
-                    self.direction = Direction.LEFT
-
-                # if key pressed is right 
-                elif event.key == pygame.K_RIGHT:
-                    # setting direction attribute sets to directon right
-                    self.direction = Direction.RIGHT
-
-                # if key pressed is up 
-                elif event.key == pygame.K_UP:
-                    # setting direction attribute sets to directon upwards
-                    self.direction = Direction.UP
-
-                # if key pressed is down
-                elif event.key == pygame.K_DOWN:
-                    # setting direction attribute sets to directon downwards
-                    self.direction = Direction.DOWN
         
         # step2: moving action
         
         # this updates the head of the snake
         # also resets the value of self.head attribute
-        self._move(self.direction) 
+        # it takes input action given by the AI
+        self._move(action)
+         
 
 
         # inserts self.head before the index 0 in the snake list
@@ -177,13 +155,19 @@ class SnakeGame:
         self.snake.insert(0, self.head) 
 
         # step3: check if game over
+
+        # reward check, +10 for eat, death is -10
+        reward = 0
         # setting game_over variable as False
         game_over = False
 
         #  if the collision occurs, game must be over 
         # results must be displayed
-        if self._is_collision():
+        # or if the frame keeps on going and snake keeps getting bigger 
+        # then also break the if statement and leave
+        if self._is_collision() or self.frame_iteration > 100*len(self.snake):
             game_over = True
+            reward = - 10
             return game_over, self.score
 
 
