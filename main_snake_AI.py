@@ -194,13 +194,26 @@ class SnakeGameAI:
         return game_over, self.score, reward
     
     # method for if collision happens -> returns boolean value
-    def _is_collision(self):
+    # parameter pt is set to None, no need to put parameter when calling it
+    # pt is introduced to detect the danger or states 
+    """ 11 states are: [ danger straight, danger right, danger left,
+                            direction left, direction right, 
+                            direction up, direction down,
+                            food left, food right,
+                            food up, food down]"""
+    
+    def _is_collision(self, pt= None):
+
+        if pt is None: # checking if the parameter is set to None
+            # then assign the value self.head to the parameter
+            pt = self.head
+
         # hits boundary
-        if self.head.x > self.w - BLOCK_SIZE or self.head.x < 0 or self.head.y > self.h - BLOCK_SIZE or self.head.y < 0:
+        if pt.x > self.w - BLOCK_SIZE or pt.x < 0 or pt.y > self.h - BLOCK_SIZE or pt.y < 0:
             return True
         
         # hits itself
-        if self.head in self.snake[1:]:  
+        if pt in self.snake[1:]:  
             # if the head is in the snake and its 3rd or later element
             # then it has hit itself
 
