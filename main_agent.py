@@ -87,11 +87,14 @@ class Agent:
 
     # takes in the state, action, reward, next state and game over and stores in memory
     def remember(self, state, action, reward, next_state, done): 
-        self.memory.append(state, action, reward, next_state, done) # popleft if max memory is reached
+        # using two parantheses as it may go in as one element
+        self.memory.append((state, action, reward, next_state, done)) # popleft if max memory is reached
         
 
     def train_long_memory(self):
         pass
+
+
     
     def train_short_memory(self, state, action, reward, next_state, done):
         self.trainer.train_step(state, action, reward, next_state, done)
