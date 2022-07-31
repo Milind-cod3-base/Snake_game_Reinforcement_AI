@@ -254,8 +254,25 @@ class SnakeGameAI:
         pygame.display.flip()
 
         
-    # method to move the snake further
+   
+    
+    """
+    Action (all are relative direction depending on current action)
+
+    [1,0,0] -> straight 
+    [0,1,0] -> right turn
+    [0,0,1] -> left turn
+    """
+     # method to move the snake further
     def _move(self, action):
+        # [straight, right, left]
+
+        # directions listed in clockwise format
+        clock_wise = [Direction.RIGHT, Direction.DOWN, Direction.LEFT, Direction.UP]
+       
+        # gets the index of the self.direction frm clock_wise list
+        idx = clock_wise.index(self.direction)
+       
         x = self.head.x # calling attribute head of snake's x cordinate
         y = self.head.y
 
