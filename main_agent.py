@@ -68,7 +68,19 @@ def train():
         state_new = agent.get_state(game)    
 
         # train short memory of agent -> only for one step
-        
+        agent.train_short_memory(state_old, final_move, reward, state_new, done)
+
+        # remember -> and store it in to the memory
+        agent.remember(state_old, final_move, reward, state_new, done)
+
+        # if game overs, then we need to train long term memory, also called (experience) replay memory
+        # it trains again on all previous moves in previous game
+        if done:
+            game.reset()
+            # since the game is done, increase the number of games counter by 1
+            agent.n_games +=1
+            #train long term memory
+            agent.train_long_memory()
 
 
 if __name__ == "__main__":
