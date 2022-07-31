@@ -25,8 +25,22 @@ class Agent:
     
     # gets state out of 11 different variables.
     def get_state(self, game):
-        pass
-    
+        # defining the head of the snake
+        head = game.snake[0]
+        
+        # points around the head of the snake to check presence of a boundary
+        point_l = Point(head.x - 20, head.y)
+        point_r = Point(head.x + 20, head.y)
+        point_u = Point(head.x, head.y - 20)
+        point_d = Point(head.x, head.y + 20)
+
+        # checking the game direction as a boolean if the current direction is one of the below
+        # only one of them will be 1
+        dir_l = game.direction == Direction.LEFT
+        dir_r = game.direction == Direction.RIGHT
+        dir_u = game.direction == Direction.UP
+        dir_d = game.direction == Direction.DOWN
+
     # takes in the state, action, reward, next state and game over 
     def remember(self, state, action, reward, next_state, done): 
         pass
