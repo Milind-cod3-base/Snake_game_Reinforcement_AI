@@ -117,7 +117,32 @@ class Agent:
 
     # takes in the state and outputs the action
     def get_action(self, state):
-        pass
+        # random moves: tradeoff exploration / exploitation
+
+        # more games we play, smaller epsilon will get
+        self.epsilon = 80 - self.n_games
+        # in beginning its all 0, but one of them will be true
+        final_move = [0,0,0]
+
+        # as the snake learns, epsilon shortens and chances of random moves decreases
+        # at one point epsilon becomes negative, and below condition is no longer valid
+        # no more random moves
+        if random.randint(0,200) < self.epsilon:
+            move = random.randint(0, 2) # 2 is included here
+            final_move[move] = 1
+        
+        else:
+            # converting state into tensor
+            state0 = torch.tensor(state, dtype=torch.float)
+            # getting raw values
+            prediction = self.model.predict(state0)
+            # converting it using argmax
+            move = torch.argmax(prediction).item()
+            # gets integer
+            final_move[move] = 1
+        
+        return final_move
+
 
 
 # global function
