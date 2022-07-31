@@ -22,7 +22,10 @@ class Agent:
         # if memory exceeds than the maximum value,
         # then it pops from the left of the deque
         self.memory = deque(maxlen=MAX_MEMORY) 
-        # TODO: model, trainer
+
+        self.model = None  #TODO
+        self.trainer = None  #TODO
+        
     
     # gets state out of 11 different variables.
     def get_state(self, game):
