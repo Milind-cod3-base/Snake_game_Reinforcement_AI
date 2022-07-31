@@ -15,7 +15,13 @@ class Agent:
     
     # creating constructor
     def __init__(self):
-        pass
+        self.n_games = 0  # number of games
+        self.epsilon = 0 # randomness
+        self.gamma = 0 # discount rate for Deep Q learning algo
+        # if memory exceeds than the maximum value,
+        # then it pops from the left of the deque
+        self.memory = deque(maxlen=MAX_MEMORY) 
+        # TODO: model, trainer
     
     # gets state out of 11 different variables.
     def get_state(self, game):
