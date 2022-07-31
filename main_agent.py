@@ -82,6 +82,14 @@ def train():
             #train long term memory
             agent.train_long_memory()
 
+            # if snake beats the previous record
+            if score > record:
+                record = score # set a new record
+                # agent.model.save()
+
+            print('Game', agent.n_games, 'Score', score, 'Record:', record)
+            
+            # TODO: plot
 
 if __name__ == "__main__":
     train()
