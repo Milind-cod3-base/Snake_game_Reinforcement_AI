@@ -94,7 +94,7 @@ class Agent:
         pass
     
     def train_short_memory(self, state, action, reward, next_state, done):
-        pass
+        self.trainer.train_step(state, action, reward, next_state, done)
 
     # takes in the state and outputs the action
     def get_action(self, state):
