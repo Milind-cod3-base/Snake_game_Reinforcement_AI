@@ -53,9 +53,22 @@ def train():
     agent = Agent() # creaing instance
     game = SnakeGameAI()
 
-    # training loop - it will run until we quit the script
+    # training loop - it will run until user quit the script
     while True:
-        pass
+        # get old/ current state
+        state_old = agent.get_state(game)
+
+        # get move
+        final_move = agent.get_action(state_old)
+
+        # perform move and get enw state
+        reward, done, score = game.play_step(final_move)
+
+        # get new state, with new game
+        state_new = agent.get_state(game)    
+
+        # train short memory of agent -> only for one step
+        
 
 
 if __name__ == "__main__":
