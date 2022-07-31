@@ -12,3 +12,7 @@ Things learnt during this project:
 Ans: the move method which is called above us resets the snake's head coordinates. 
 Hence these new coordinates of head must be put inside the snakes body.
 Hence, we insert the new head into the snake's head.
+
+6. next_idx = (idx+1)%4, this will move to the next index of the list.
+eg. if idx is 0, then (0+1)%4 = 1 and if idx is 1, then (1+1)%4 is 2. Hence the next 
+index could be calculated using this.
