@@ -34,7 +34,7 @@ class Agent:
     def train_long_memory(self):
         pass
     
-    def train_short_memory(self):
+    def train_short_memory(self, state, action, reward, next_state, done):
         pass
 
     # takes in the state and outputs the action
