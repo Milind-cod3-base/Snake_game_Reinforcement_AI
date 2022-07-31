@@ -5,6 +5,8 @@ import random
 from enum import Enum
 from collections import namedtuple
 
+import numpy as np
+
 # initialize all imported pygame modules
 pygame.init()
 
@@ -270,27 +272,57 @@ class SnakeGameAI:
         # directions listed in clockwise format
         clock_wise = [Direction.RIGHT, Direction.DOWN, Direction.LEFT, Direction.UP]
        
-        # gets the index of the self.direction frm clock_wise list
+        # gets the index of the current direction frm clock_wise list
         idx = clock_wise.index(self.direction)
+
+        # np.array_equal(a1,a2) is true if two arrays are same shape and elements
+    
+        if np.array_equal(action, [1, 0, 0] ): # we keep the current direction
+            new_dir = clock_wise[idx]  
+        
+        elif np.array_equal(action, [0, 1, 0] ): # all relative
+            # if the ai says to turn right, we have to make it right relative to current direction
+            # hence we need to take next index in the clockwise direction list. We dont want absolute right.
+
+            # rotating index
+            next_idx = (idx + 1) % 4  # this gives me the remainder
+            
+            # new direction
+            new_dir = clock_wise[next_idx]  # right turn r -> d -> l -> u (turns right, if already right, then down etc.)
+        
+        else: #[0,0,1]
+            # if ai says to turn left, we take relative left, relative to current direction
+            next_idx = (idx-1) % 4 # moving backwards in the list
+            
+            new_dir = clock_wise[next_idx] # left turn r -> u -> l -> d
+
+        self.direction = new_dir
        
         x = self.head.x # calling attribute head of snake's x cordinate
         y = self.head.y
 
-        if direction == Direction.RIGHT:
+        if self.direction == Direction.RIGHT:
             # updating x
             x += BLOCK_SIZE
         
-        elif direction == Direction.LEFT:
+        elif self.direction == Direction.LEFT:
             # updating x
             x -= BLOCK_SIZE
 
-        elif direction == Direction.DOWN:
-            # y updating
+        elif self.direction == Direction.DOWN:
+            # y updating, y starts at top hence increase y
             y += BLOCK_SIZE
 
-        elif direction == Direction.UP:
+        elif self.direction == Direction.UP:
             # y updating
             y -= BLOCK_SIZE
 
         # reseting self.head values to the new cordinates
         self.head = Point(x,y)
+
+
+"""
+    Below this module safety net if condition is not required
+    as this is just a module and the above class
+    will be controlled by the agent
+"""
