@@ -34,3 +34,11 @@ class Agent:
     # takes in the state and outputs the action
     def get_action(self, state):
         pass
+
+
+# global function
+def train():
+    pass
+
+if __name__ == "__main__":
+    train()
