@@ -169,7 +169,7 @@ class SnakeGameAI:
         # results must be displayed
         # or if the frame keeps on going and snake length doesnt change
         # its jus moving without eating then stop using a custom formula
-        if self._is_collision() or self.frame_iteration > 100*len(self.snake):
+        if self.is_collision() or self.frame_iteration > 100*len(self.snake):
             game_over = True
             reward = - 10   # collision or longer gameplay without increase
             return reward, game_over, self.score
@@ -204,7 +204,10 @@ class SnakeGameAI:
                             food left, food right,
                             food up, food down]"""
     
-    def _is_collision(self, pt= None):
+    #earlier this method had leading underscore: internal. 
+    # But this was a mistake, as the agent module wants to use this
+    # Hence leading underscore is removed, making it a public method
+    def is_collision(self, pt= None):
 
         if pt is None: # checking if the parameter is set to None
             # then assign the value self.head to the parameter
