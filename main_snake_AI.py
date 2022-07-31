@@ -122,7 +122,9 @@ class SnakeGameAI:
 
    
     # creating a method for the snake to take steps
-    def play_step(self):
+    # this function now takes action parameter which is given by AI
+    def play_step(self, action):
+        self.frame_iteration +=1
 
         # step1: collecting user input
 
@@ -163,12 +165,12 @@ class SnakeGameAI:
 
         #  if the collision occurs, game must be over 
         # results must be displayed
-        # or if the frame keeps on going and snake keeps getting bigger 
-        # then also break the if statement and leave
+        # or if the frame keeps on going and snake length doesnt change
+        # its jus moving without eating then stop using a custom formula
         if self._is_collision() or self.frame_iteration > 100*len(self.snake):
             game_over = True
-            reward = - 10
-            return game_over, self.score
+            reward = - 10   # collision or longer gameplay without increase
+            return reward, game_over, self.score
 
 
 
@@ -189,7 +191,7 @@ class SnakeGameAI:
         self.clock.tick(SPEED)
 
         # step6: return game over and score
-        return game_over, self.score
+        return game_over, self.score, reward
     
     # method for if collision happens -> returns boolean value
     def _is_collision(self):
@@ -240,7 +242,7 @@ class SnakeGameAI:
 
         
     # method to move the snake further
-    def _move(self, direction):
+    def _move(self, action):
         x = self.head.x # calling attribute head of snake's x cordinate
         y = self.head.y
 
