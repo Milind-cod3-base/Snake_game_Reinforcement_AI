@@ -8,9 +8,18 @@ A snake game which teaches itself how to increase surviving time and get maximum
     - Snake Game (game)
     - model: DQN (deep q learning: deep learning with reinforcement learning)
 
+### States:
+    11 states are: [ danger straight, danger right, danger left,
+                            
+                    direction left, direction right, 
+                    direction up, direction down,
+                    
+                    food left, food right,
+                    food up, food down]
+
 ### Linear_QNet (DQN model):
     - model.predict(state) // takes state of the snake as input
-        ->action  // outputs action suitable for snake
+        -> action  // outputs action suitable for snake
         
 ### Snake Game (game):
     - play_step(action) // takess the action predicted by NN
@@ -24,3 +33,4 @@ A snake game which teaches itself how to increase surviving time and get maximum
     - new_state = get_state(game) // collecting the new state
     - remember // remember the rewards and losses
     - model.train() // a trained model
+
