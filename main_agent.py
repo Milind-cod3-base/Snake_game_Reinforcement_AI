@@ -41,6 +41,46 @@ class Agent:
         dir_u = game.direction == Direction.UP
         dir_d = game.direction == Direction.DOWN
 
+        # establishing 11 states
+        state = [
+
+                # Danger straight states -> relative direction hence used 'or'
+                (dir_r and game.is_collision(point_r)) or
+                (dir_l and game.is_collision(point_l)) or
+                (dir_u and game.is_collision(point_u)) or
+                (dir_d and game.is_collision(point_d)),
+
+                # Danger right
+                (dir_u and game.is_collision(point_r)) or
+                (dir_d and game.is_collision(point_l)) or
+                (dir_l and game.is_collision(point_u)) or
+                (dir_r and game.is_collision(point_d)),
+
+                # Danger left
+                (dir_d and game.is_collision(point_r)) or
+                (dir_u and game.is_collision(point_l)) or
+                (dir_r and game.is_collision(point_u)) or
+                (dir_l and game.is_collision(point_d)),
+
+                # Move direction -> one of them is true
+                dir_l,
+                dir_r,
+                dir_u,
+                dir_d,
+
+                # food location
+                game.food.x < game.head.x, # food left
+                game.food.x > game.head.x, # food right
+                game.food.y < game.head.y, # food up
+                game.food.y > game.head.y # food down  
+        ]
+
+
+        
+
+        # converting above boolean to 1 and 0 using numpy array
+        return np.array(state, dtype= int)
+
     # takes in the state, action, reward, next state and game over 
     def remember(self, state, action, reward, next_state, done): 
         pass
@@ -64,7 +104,7 @@ def train():
     plot_mean_scores = []
     total_score = 0
     record = 0
-    agent = Agent() # creaing instance
+    agent = Agent() # creating instance
     game = SnakeGameAI()
 
     # training loop - it will run until user quit the script
