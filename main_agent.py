@@ -6,7 +6,7 @@ from collections import deque
 from snake_AI_env import SnakeGameAI, Direction, Point
 
 # setting parameters
-MAX_MEMORY = 100_000
+MAX_MEMORY = 100_000 # underscore is neglected by interpreter
 BATCH_SIZE = 1000
 LR = 0.001
 
@@ -44,7 +44,19 @@ class Agent:
 
 # global function
 def train():
-    pass
+    # empty list which keeps track of the scores and plot them
+    plot_scores = []
+    # average scores
+    plot_mean_scores = []
+    total_score = 0
+    record = 0
+    agent = Agent() # creaing instance
+    game = SnakeGameAI()
+
+    # training loop - it will run until we quit the script
+    while True:
+        pass
+
 
 if __name__ == "__main__":
     train()
