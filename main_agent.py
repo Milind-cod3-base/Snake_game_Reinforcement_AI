@@ -92,7 +92,23 @@ class Agent:
         
 
     def train_long_memory(self):
-        pass
+        # we grab one batch(1000 samples in memory)
+
+        # first check if we have more than 1000 samples
+        if len(self.memory) > BATCH_SIZE:
+            # then only taking batchsize randomly
+            mini_sample = random.sample(self.memory, BATCH_SIZE) # returns list of tuples
+        
+        else:
+            # then take the whole memory
+            mini_sample = self.memory
+
+        # getting multiple states, actions ,rewards etc. together
+        states, actions, rewards, next_states, dones = zip(*mini_sample)
+
+        
+        self.trainer.train_step(states, actions, rewards, next_states, dones)
+
 
 
     
