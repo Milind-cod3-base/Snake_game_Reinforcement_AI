@@ -18,6 +18,7 @@ class Agent:
         self.n_games = 0  # number of games
         self.epsilon = 0 # randomness
         self.gamma = 0 # discount rate for Deep Q learning algo
+        # memory is responsible to remember the parameters
         # if memory exceeds than the maximum value,
         # then it pops from the left of the deque
         self.memory = deque(maxlen=MAX_MEMORY) 
@@ -81,9 +82,10 @@ class Agent:
         # converting above boolean to 1 and 0 using numpy array
         return np.array(state, dtype= int)
 
-    # takes in the state, action, reward, next state and game over 
+    # takes in the state, action, reward, next state and game over and stores in memory
     def remember(self, state, action, reward, next_state, done): 
-        pass
+        self.memory.append(state, action, reward, next_state, done) # popleft if max memory is reached
+        
 
     def train_long_memory(self):
         pass
