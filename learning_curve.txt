@@ -16,3 +16,9 @@ Hence, we insert the new head into the snake's head.
 6. next_idx = (idx+1)%4, this will move to the next index of the list.
 eg. if idx is 0, then (0+1)%4 = 1 and if idx is 1, then (1+1)%4 is 2. Hence the next 
 index could be calculated using this.
+
+7. Deque (Doubly Ended Queue) in Python is implemented using the module “collections“.
+ Deque is preferred over a list in the cases where we need quicker append 
+and pop operations from both the ends of the container, as deque provides an O(1) time complexity 
+for append and pop operations as compared to list which 
+provides O(n) time complexity. [methods: pop, append, popleft (deletes first element), appendleft (appends first element)]
