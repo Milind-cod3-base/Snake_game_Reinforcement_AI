@@ -26,3 +26,6 @@ provides O(n) time complexity. [methods: pop, append, popleft (deletes first ele
 8. Convergence: is a point in training a model in which loss settles to within an error range around final value. Additional training will not improve the model.
 
 9. Q learning:?
+
+10. random moves: trade off between exploration and exploitation -> first let the model explore in early phase, but once
+the model gains some knowledge exploitation must happen.
