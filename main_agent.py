@@ -18,7 +18,8 @@ class Agent:
     def __init__(self):
         self.n_games = 0  # number of games
         self.epsilon = 0 # randomness
-        self.gamma = 0 # discount rate for Deep Q learning algo
+        # it must be smaller than 1
+        self.gamma = 0.9 # discount rate for Deep Q learning algo
         # memory is responsible to remember the parameters
         # if memory exceeds than the maximum value,
         # then it pops from the left of the deque
