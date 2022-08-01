@@ -26,7 +26,7 @@ class Agent:
 
         # input size: 11 states, hidden layer size: custom, output_size: 3
         self.model = Linear_QNet(11, 256, 3)
-        self.trainer = None  #TODO
+        self.trainer = QTrainer(self.model, lr=LR, gamma = self.gamma)
         
     
     # gets state out of 11 different variables.
