@@ -1,6 +1,6 @@
 from IPython import display
 from matplotlib import pyplot as plt
-from torch import mean
+
 
 plt.ion()  # interactive mode on
 
@@ -9,7 +9,7 @@ def plot(scores, mean_scores):
     display.display(plt.gcf())
     plt.clf()
     plt.title('Training...')
-    plt.xlable('Number of Games')
+    plt.xlabel('Number of Games')
     plt.ylabel('Score')
     plt.plot(scores)
     plt.plot(mean_scores)
