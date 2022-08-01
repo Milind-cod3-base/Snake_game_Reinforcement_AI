@@ -92,5 +92,9 @@ class QTrainer:
         # # because we need in the same format, simply clone it to get the three values
         # pred.clone() 
         # preds[argmax(action)] = Q_new  # index of argmax sets new Q value
+        self.optimizer.zero_grad()
+        loss =  self.criterion(target, pred)
+        loss.backward()
 
+        self.optimizer.step()
 
