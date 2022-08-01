@@ -55,3 +55,13 @@ class QTrainer:
         # loss function -> mean square error
         self.criterion = nn.MSELoss()
 
+    # training step needs all the old parameters
+    def train_step(self, state, action, reward, next_state, done):
+        # converting into a pytorch tensor
+        state = torch.tensor(state, dtype=torch.float)
+        next_state = torch.tensor(next_state, dtype=torch.float)
+        action = torch.tensor(action, dtype=torch.long)
+        reward = torch.tensor(reward, dtype=torch.float)
+        # done / game over is not performed as no tensor needed for it
+        
+
