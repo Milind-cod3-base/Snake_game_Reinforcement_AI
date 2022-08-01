@@ -28,3 +28,19 @@ class Linear_QNet(nn.Module):
         x = self.linear2(x) # returning raw values
         
         return x
+    
+    # helper function to save the model later
+    def save(self, file_name = 'model.pth' ):  # a default filename
+        # new folder creation
+        model_folder_path = './model'
+
+        # create a new folder if doesnt exists already
+        if not os.path.exists(model_folder_path):
+            os.makedirs(model_folder_path) 
+
+        # assigning the complete location of the file 
+        file_name = os.path.join(model_folder_path, file_name)
+        # save state dict, and path is file_name
+        torch.save(self.state_dict(), file_name) 
+
+
