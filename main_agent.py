@@ -138,7 +138,7 @@ class Agent:
             # converting state into tensor
             state0 = torch.tensor(state, dtype=torch.float)
             # getting raw values
-            prediction = self.model.predict(state0)
+            prediction = self.model(state0)
             # converting it using argmax
             move = torch.argmax(prediction).item()
             # gets integer
