@@ -17,6 +17,13 @@ A snake game which teaches itself how to increase surviving time and get maximum
                     food left, food right,
                     food up, food down]
 
+### Action:
+    Using relative action instead of absolute
+    
+    straight ->   [1,0,0]
+    right turn -> [0,1,0]
+    left turn ->  [0,0,1]
+
 ### Linear_QNet (DQN model):
     - model.predict(state) // takes state of the snake as input
         -> action  // outputs action suitable for snake
