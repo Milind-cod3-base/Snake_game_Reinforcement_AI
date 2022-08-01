@@ -62,6 +62,17 @@ class QTrainer:
         next_state = torch.tensor(next_state, dtype=torch.float)
         action = torch.tensor(action, dtype=torch.long)
         reward = torch.tensor(reward, dtype=torch.float)
+        # (n, x) shape
         # done / game over is not performed as no tensor needed for it
         
+
+        if len(state.shape) == 1: # means one dimension
+            # reshape it into form (1, x) where 1 is no. of batches
+            # adding one dimension
+            state = torch.unsqueeze(state, 0)
+            next_state = torch.unsqueeze(next_state, 0)
+            action = torch.unsqueeze(action, 0)
+            reward = torch.unsqueeze(reward, 0)
+            done = (done, )
+
 
