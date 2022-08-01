@@ -75,4 +75,22 @@ class QTrainer:
             reward = torch.unsqueeze(reward, 0)
             done = (done, )
 
+        # 1: predicited Q values wih current state
+        pred = self.model(state)
+
+        target = pred.clone()
+        for idx in range(len(done)):
+            Q_new = reward[idx]
+
+            if not done[idx]: # if not game over
+                Q_new = reward[idx] + self.gamma * torch.max(self.model(next_state[idx]))
+
+            # need this as an item and not tensor
+            target[idx][torch.argmax(action).item()] = Q_new
+
+        # 2: Q_new = r + y * max( next_predicted Q value) -> only do this if not done, other wise take the whole reward
+        # # because we need in the same format, simply clone it to get the three values
+        # pred.clone() 
+        # preds[argmax(action)] = Q_new  # index of argmax sets new Q value
+
 
