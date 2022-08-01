@@ -4,6 +4,7 @@ import numpy as np
 from collections import deque 
 # importing classes and object from self made module
 from snake_AI_env import SnakeGameAI, Direction, Point
+from model import Linear_QNet, QTrainer
 
 # setting parameters
 MAX_MEMORY = 100_000 # underscore is neglected by interpreter
@@ -23,7 +24,8 @@ class Agent:
         # then it pops from the left of the deque
         self.memory = deque(maxlen=MAX_MEMORY) 
 
-        self.model = None  #TODO
+        # input size: 11 states, hidden layer size: custom, output_size: 3
+        self.model = Linear_QNet(11, 256, 3)
         self.trainer = None  #TODO
         
     
