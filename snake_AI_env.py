@@ -45,7 +45,7 @@ BLOCK_SIZE = 20
 
 # variable: speed of the clock which refreshes the screen
 # indirectly speed of the snake
-SPEED = 2
+SPEED = 40 
 
 # creating a class for the AI handled snake game 
 class SnakeGameAI:
