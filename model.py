@@ -43,4 +43,15 @@ class Linear_QNet(nn.Module):
         # save state dict, and path is file_name
         torch.save(self.state_dict(), file_name) 
 
+# class for training the module
+class QTrainer:
+    # creating a constructor
+    def __init__(self, model, lr, gamma): # lr = learning rate
+        self.lr = lr
+        self.gamma = gamma
+        self.model = model
+        # using adam optimiser, optimise the parameters
+        self.optimizer = optim.Adam(model.parameters(), lr= self.lr)
+        # loss function -> mean square error
+        self.criterion = nn.MSELoss()
 
