@@ -180,6 +180,8 @@ class SnakeGameAI:
         if self.head == self.food:
             # increase score by one
             self.score +=1
+            # give reward
+            reward = 10
             # after eating place the food again
             self._place_food()
         
