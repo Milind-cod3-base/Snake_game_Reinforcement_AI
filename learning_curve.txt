@@ -33,3 +33,5 @@ the model gains some knowledge exploitation must happen.
 11. Code refacoring: is a process of restructuring existing computer code - changing the factoring - without changing its behavior. 
 It is intended to improve the design, structure, and/or implementation of the software, while preserving its
 functionality.
+
+12:Pytorch -> saving and loading models: ??
